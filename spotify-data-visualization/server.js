@@ -1,6 +1,5 @@
 var request = require('request');
-
-var credentials = require('./backend/client-credentials.json');
+var credentials = require('./client-credentials.json');
 
 var authOptions = {
    url: 'https://accounts.spotify.com/api/token',
@@ -13,20 +12,34 @@ var authOptions = {
    json: true
 };
 
-request.post(authOptions, function(error, response, body) {
-   if (!error && response.statusCode === 200) {
+/**
+ * Authenticates a user based on credentials given in client-credentials.json
+ * 
+ * Returns the access token
+ */
+export const login = () => {
+   request.post(authOptions, function(error, response, body) {
+      if (!error && response.statusCode === 200)
+         return body.access_token;
+   });
+};
 
-      // use the access token to access the Spotify Web API
-      var token = body.access_token;
-      var options = {
-         url: 'https://api.spotify.com/v1/users/jmperezperez',
-         headers: {
-         'Authorization': 'Bearer ' + token
-         },
-         json: true
-      };
-      request.get(options, function(error, response, body) {
-         console.log(body);
-      });
-   }
-});
+/**
+ * Retrieves information on jmperezperez and logs it to the console
+ * 
+ * @param {*} token: access token 
+ */
+export const getJmPerez = (token) => {
+   var options = {
+      url: 'https://api.spotify.com/v1/users/jmperezperez',
+      headers: {
+      'Authorization': 'Bearer ' + token
+      },
+      json: true
+   };
+   request.get(options, function(error, response, body) {
+      console.log(body);
+   });
+}
+
+
