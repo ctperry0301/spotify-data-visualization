@@ -1,17 +1,21 @@
 import { Bar } from 'react-chartjs-2';
 import React, { useState } from 'react';
-import { doEverything } from './server';
 import { backgroundColors, borderColors, graphOptions, buttonStyles, songObject } from './constants';
 import './App.css';
 
 
 function App() {
+  // React code that makes re-rendering things easy (like the graph) 
   let [graphData, setGraphData] = useState({});
   let [clicked, setClicked] = useState(false);
 
-  let processRequests =  () => {
-    setTimeout(() => {getAPIData(); console.log(songObject)}, 5000);
+
+  // Gives the backend code a few seconds to make sure everything works as expected
+  let processRequests =  () => { 
+    setTimeout(() => {getAPIData(); console.log(songObject)}, 5000); 
   }
+
+
 
   let getAPIData = () => {
     // The JSON data that the Spotify API returns
@@ -59,7 +63,7 @@ function App() {
           <Bar
             data={graphData}
             width={250}
-            height={130}
+            height={150}
             options={graphOptions}
           />
         ) : null
