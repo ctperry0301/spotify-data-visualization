@@ -62,7 +62,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <div style={{width: '70%'}}>
-        <button style={buttonStyles} onClick={getAPIData}>Make Graph</button>
+        <button style={buttonStyles} onClick={doEverything}>Make Graph</button>
         {clicked? (
           <Bar
             data={graphData}
