@@ -76,6 +76,4 @@ const doEverything = () => {
    });
 }
 
-doEverything();
-
 module.exports = { doEverything };
