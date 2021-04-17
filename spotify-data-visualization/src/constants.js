@@ -246,7 +246,7 @@ export const songObject = {
   "Wasted": 1,
   "Options (with Wale)": 1,
   "Sunblind": 2,
-  "Best Friend (feat. Doja Cat": 5,
+  "Best Friend (feat. Doja Cat)": 5,
   "The Stable Song": 1,
   "21C/Delta": 1,
   "Stay High": 1,
