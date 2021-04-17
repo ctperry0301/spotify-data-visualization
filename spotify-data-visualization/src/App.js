@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2';
 import React, { useState } from 'react';
 import { doEverything } from './server';
-import { backgroundColors, borderColors, graphOptions, buttonStyles } from './constants';
+import { backgroundColors, borderColors, graphOptions, buttonStyles, songObject } from './constants';
 import './App.css';
 
 
@@ -9,20 +9,12 @@ function App() {
   let [graphData, setGraphData] = useState({});
   let [clicked, setClicked] = useState(false);
 
+  let processRequests =  () => {
+    setTimeout(() => {getAPIData(); console.log(songObject)}, 5000);
+  }
+
   let getAPIData = () => {
     // The JSON data that the Spotify API returns
-    let songObject = {
-      'Leace the Door Open': 2,
-      'Montero': 3,
-      'Peaches' : 2,
-      'Drivers License' : 4,
-      'Save Your Tears' : 7,
-      'Deja Vu' : 6,
-      'Blinding Lights' : 2,
-      'Mood' : 3,
-      'My Ex\'s Best Friend' : 4,
-      'Go Crazy' : 5,
-    }
     // Make the JSON into an Array
     let songArr = [];
     for (var item in songObject) {
@@ -62,7 +54,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <div style={{width: '70%'}}>
-        <button style={buttonStyles} onClick={doEverything}>Make Graph</button>
+        <button style={buttonStyles} onClick={processRequests}>Make Graph</button>
         {clicked? (
           <Bar
             data={graphData}

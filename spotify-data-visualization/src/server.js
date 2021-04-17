@@ -27,13 +27,16 @@ const getSongTitles = (trackCount, token) => {
 
       request.get(config, (error, response, body) => {
          let trackName = body.name && body.name.toString();
-         if (trackInfo.hasOwnProperty(trackName))
-            trackInfo[trackName] += 1;
-         else
-            trackInfo[trackName] = 1;
-      })
+          if (trackInfo.hasOwnProperty(trackName))
+              trackInfo[trackName] += 1;
+          else
+              if (trackName !== 'undefined') {
+                trackInfo[trackName] = 1;
+              }
+         }
+      )
    })
-   setTimeout(() => console.log(trackInfo), 5000);
+   setTimeout(() => console.log(trackInfo), 10000);
 }
 
 const doEverything = () => {
@@ -70,7 +73,7 @@ const doEverything = () => {
                  });
               })
            });
-           setTimeout(getSongTitles, 10000, trackCount, token);
+           setTimeout(getSongTitles, 20000, trackCount, token);
         });
       }
    });
