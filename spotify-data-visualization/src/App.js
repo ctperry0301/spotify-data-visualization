@@ -1,6 +1,6 @@
 import { Bar } from 'react-chartjs-2';
 import React, { useState } from 'react';
-import { doEverything } from '../server.js';
+import { doEverything } from './server';
 import { backgroundColors, borderColors, graphOptions, buttonStyles } from './constants';
 import './App.css';
 
